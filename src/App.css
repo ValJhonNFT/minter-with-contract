@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+@font-face {
+   font-family: 'Speeday';
+   src: url('./assets/fonts/Speeday-Regular-FFP.ttf') format('truetype');
+}
+
+@font-face {
+   font-family: 'Teko-Bold';
+   src: url('./assets/fonts/Teko-Bold.ttf') format('truetype');
+}
+
+.copyright{
+  color:white;
+  font-size: 30px;
+  text-align: left;
+}
+
+.copyright-below {
+  font-family: Quicksand;
+  font-size: 15px;
+
+}
+
+.main-app {
+    text-align: center;
+    margin: 100px;
+
+}
+
+.button {
+
+}
+
+.footer{
+
+  background-color: orange;
+
+}
+
+h1 {
+  font-family: "Speeday";
+  color: #117ACA;
+  font-size:80px;
+}
+
+p {
+  color:white;
+}
+
+.cta-button {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    min-width: 250px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.connect-wallet-button {
+    background: rgb(32, 129, 226);
+}
+
+.mint-nft-button {
+    background: blue;
+}
