@@ -50,7 +50,7 @@ const Footer = () => {
         {/* Left Side - Social Media Icons */}
 
 
-           <h1 className="copyright">VAULT CARD HEXGO<p className="copyright-below">© 2022 HEXGO VAULTCARD</p></h1>
+           <h1 className="copyright">VAL NFT<p className="copyright-below">© 2022 TESTING WEBSITE</p></h1>
 
             <h1 className="copyright"><Image src={Alchemy} w="300px" margin="10px" /></h1>
           </Flex>
