@@ -98,7 +98,7 @@ function App() {
 
   return (
     <div className='main-app'>
-      <h1>HEX GO VAULT</h1>
+      <h1>VAL NFT</h1>
       <p>Works in the Rinkeby Testnetwork</p>
       <div>
         {currentAccount ? mintNftButton() : connectWalletButton()}
