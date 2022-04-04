@@ -4,9 +4,9 @@ import contract from './contracts/NFTCollectible.json';
 import { ethers } from 'ethers';
 
 
+//0xd60b2d46aC9b58b4d69248c443589cFd2b0bafd0
 
-
-const contractAddress = "0xd60b2d46aC9b58b4d69248c443589cFd2b0bafd0";
+const contractAddress = "0x411F1F561395CB0a95e0a3c51CCf1BE271FDc575";
 const abi = contract.abi;
 
 function App() {
