@@ -2,16 +2,20 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import contract from './contracts/NFTCollectible.json';
 import { ethers } from 'ethers';
+import { Box, Text } from '@chakra-ui/react'
 
 
 //0xd60b2d46aC9b58b4d69248c443589cFd2b0bafd0
 
 const contractAddress = "0x03aBAa62EE6957f8938B6f4a405aa9B32dC94209";
 const abi = contract.abi;
+const myaccount = ("");
 
 function App() {
 
   const [currentAccount, setCurrentAccount] = useState(null);
+  const [test, setTest] = useState("");
+
 
   const checkWalletIsConnected = async () => {
     const { ethereum } = window;
@@ -37,6 +41,7 @@ function App() {
   const connectWalletHandler = async () => {
     const { ethereum } = window;
 
+
     if (!ethereum) {
       alert("Please install Metamask!");
     }
@@ -45,6 +50,7 @@ function App() {
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       console.log("Found an account! Address: ", accounts[0]);
       setCurrentAccount(accounts[0]);
+      accounts[0].toString = myaccount;
     } catch (err) {
       console.log(err)
     }
@@ -61,14 +67,19 @@ function App() {
 
         console.log("Initialize payment");
         let nftTxn = await nftContract.mintNFTs(1, { value: ethers.utils.parseEther("0.01") });
+        setTest("Initialize payment");
 
         console.log("Mining... please wait");
+        setTest("Mining... please wait");
         await nftTxn.wait();
 
+
         console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+        setTest(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
 
       } else {
         console.log("Ethereum object does not exist");
+        setTest("Ethereum object does not exist");
       }
 
     } catch (err) {
@@ -81,6 +92,7 @@ function App() {
       <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
         Connect Wallet
       </button>
+
     )
   }
 
@@ -97,13 +109,21 @@ function App() {
   }, [])
 
   return (
-    <div className='main-app'>
-      <h1>VAL NFT</h1>
-      <p>Works in the Rinkeby Testnetwork</p>
+  <div className="overlay">
+  <div className="section-background">
+
+    <Box  display="relative" className="main-content" w='100%' h="100%" p={4} color='white' align="center">
+<div className="spacer"></div>
+      <h1 className="main-text">VAL NFT</h1>
+
       <div>
         {currentAccount ? mintNftButton() : connectWalletButton()}
       </div>
+        <Text className="test"><span>Rinkeby Test Network: </span><span>{test}</span></Text>
+      </Box>
+
     </div>
+</div>
   )
 }
 
