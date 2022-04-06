@@ -3,18 +3,20 @@ import './App.css';
 import contract from './contracts/NFTCollectible.json';
 import { ethers } from 'ethers';
 import { Box, Text } from '@chakra-ui/react'
-
+import loading from './assets/loading-buffering.gif';
 
 //0xd60b2d46aC9b58b4d69248c443589cFd2b0bafd0
 
 const contractAddress = "0x03aBAa62EE6957f8938B6f4a405aa9B32dC94209";
 const abi = contract.abi;
-const myaccount = ("");
+
 
 function App() {
 
   const [currentAccount, setCurrentAccount] = useState(null);
   const [test, setTest] = useState("");
+  const [account_, setAccounts] = useState("");
+  const [loading_, isLoading] = useState([]);
 
 
   const checkWalletIsConnected = async () => {
@@ -32,7 +34,9 @@ function App() {
     if (accounts.length !== 0) {
       const account = accounts[0];
       console.log("Found an authorized account: ", account);
+      setAccounts(accounts[0]);
       setCurrentAccount(account);
+
     } else {
       console.log("No authorized account found");
     }
@@ -50,7 +54,10 @@ function App() {
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       console.log("Found an account! Address: ", accounts[0]);
       setCurrentAccount(accounts[0]);
-      accounts[0].toString = myaccount;
+
+
+
+
     } catch (err) {
       console.log(err)
     }
@@ -69,13 +76,19 @@ function App() {
         let nftTxn = await nftContract.mintNFTs(1, { value: ethers.utils.parseEther("0.01") });
         setTest("Initialize payment");
 
+
         console.log("Mining... please wait");
+        isLoading(<span><img  className="loading" src={loading} alt="loading..." width="10px" /></span>);
+
         setTest("Mining... please wait");
         await nftTxn.wait();
 
 
         console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+        isLoading(<span></span>);
         setTest(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+
+
 
       } else {
         console.log("Ethereum object does not exist");
@@ -120,7 +133,9 @@ function App() {
         {currentAccount ? mintNftButton() : connectWalletButton()}
       </div>
       <div className="spacer-2"></div>
-        <Text className="test"><span>Rinkeby Test Network: </span><span>{test}</span></Text>
+      <div className="account-text">✅Account: {account_}</div>
+      <div className="spacer-3"></div>
+        <Text padding="20px 20px 20px 20px" className="test"><span>✅Works on any ETH Test Network: </span>{loading_}<div>{test}</div></Text>
       </Box>
 
     </div>
