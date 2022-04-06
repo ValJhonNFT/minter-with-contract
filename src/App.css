@@ -25,28 +25,29 @@
 
 @media only screen and (max-width: 768px) {
 .section-background {
-width: fit-content;
-height: 300vh !important;
+
+height: 100vh !important;
 overflow:hidden;
+width: auto;
 }
 .spacer{
-  height:70vh !important;
+
 }
 
 h1 {
-  font-size:150px !important;
+  font-size:65px !important;
 }
 
 .cta-button {
-    padding: 15px;
+
     border: none;
     border-radius: 12px;
-    min-width: 400px !important;
-    min-height: 100px !important;
+    min-width: 100px !important;
+    min-height: 30px !important;
     color: white;
     font-size: 30px !important;
     cursor: pointer;
-
+    font-family: "Quicksand";
 }
 
 .test {
@@ -79,6 +80,10 @@ h1 {
 position:relative;
 
 height:30vh;
+}
+
+.spacer-2{
+  height:5vh;
 }
 
 .main-text {
@@ -158,5 +163,5 @@ p {
 }
 
 .mint-nft-button {
-    background: blue;
+    background: rgb(32, 129, 226);
 }

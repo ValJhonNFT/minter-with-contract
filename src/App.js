@@ -119,6 +119,7 @@ function App() {
       <div>
         {currentAccount ? mintNftButton() : connectWalletButton()}
       </div>
+      <div className="spacer-2"></div>
         <Text className="test"><span>Rinkeby Test Network: </span><span>{test}</span></Text>
       </Box>
 
